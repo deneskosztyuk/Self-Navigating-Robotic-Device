@@ -3,8 +3,9 @@
 A sophisticated autonomous robot built from the ground up, featuring custom hardware design, 3D printed chassis, and intelligent obstacle avoidance capabilities. This project demonstrates end-to-end robotics development from PCB design to firmware implementation.
 
 ## 🤖 Project Overview
-
 This self-navigating robotic device utilizes the **ATmega328p microcontroller** as its brain, equipped with infrared sensors for obstacle detection and a suite of onboard modules for autonomous navigation through unknown terrain. The robot combines custom hardware design with intelligent software algorithms to create a fully autonomous navigation system.
+![Pictfdsfure1](https://github.com/user-attachments/assets/1bbd3b62-5939-45a1-a90e-a5ee656c3c3b)
+
 
 ## ✨ Key Features
 
@@ -18,6 +19,7 @@ This self-navigating robotic device utilizes the **ATmega328p microcontroller** 
 ## 🛠️ Technical Implementation
 
 ### Hardware Design
+![Picturefdsfdsfs1](https://github.com/user-attachments/assets/89504bca-8950-4b13-b93f-a6c30add3a4c)
 - **Microcontroller**: ATmega328p MCU for main processing
 - **Sensors**: Infrared sensors for obstacle detection and distance measurement
 - **Motor Control**: Custom motor driver circuit with PID controller implementation
@@ -25,12 +27,14 @@ This self-navigating robotic device utilizes the **ATmega328p microcontroller** 
 - **Chassis**: 3D printed robot body designed for optimal sensor positioning
 
 ### Software Architecture
+![Block_Diagram](https://github.com/user-attachments/assets/fee38f12-9d44-4505-a8e6-b595e15d8f51)
 - **Firmware**: Custom-written embedded C code for real-time control
 - **Obstacle Avoidance**: Intelligent algorithms for dynamic path planning
 - **Sensor Integration**: Real-time infrared sensor data processing
 - **Motor Control**: PID-based movement control for precise navigation
 
 ### Manufacturing Process
+![bvcbvcbc](https://github.com/user-attachments/assets/4c04869e-be8e-4940-8d3f-292578071c46)
 - **PCB Fabrication**: Custom circuit board design and manufacturing
 - **Component Assembly**: Hand-soldered all electronic components
 - **3D Printing**: Custom chassis fabrication
@@ -38,7 +42,6 @@ This self-navigating robotic device utilizes the **ATmega328p microcontroller** 
 - **Testing & Validation**: Comprehensive testing in various terrain conditions
 
 ## 🔧 Technologies Used
-
 - **Embedded C** - Core firmware development
 - **Electronics Engineering** - Circuit design and component selection
 - **Robotics** - Navigation algorithms and system integration
