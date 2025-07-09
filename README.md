@@ -8,7 +8,7 @@ This self-navigating robotic device utilizes the **ATmega328p microcontroller** 
 
 
 ## ✨ Key Features
-
+https://github.com/user-attachments/assets/6690cefc-9b7a-4c3d-8012-c05ae7c241ee
 - **Autonomous Navigation**: Intelligent pathfinding through challenging and unknown environments
 - **Obstacle Avoidance**: Real-time infrared sensor-based detection and avoidance algorithms
 - **Custom Hardware**: Fully designed and manufactured PCB with hand-soldered components
@@ -49,7 +49,6 @@ This self-navigating robotic device utilizes the **ATmega328p microcontroller** 
 - **Arduino** - Development environment and prototyping
 
 ## 🚀 Development Process
-
 1. **Requirements Analysis**: Defined navigation capabilities and performance targets
 2. **Hardware Design**: Created custom PCB schematics and 3D printed chassis
 3. **Component Sourcing**: Selected and procured all electronic components
@@ -59,7 +58,6 @@ This self-navigating robotic device utilizes the **ATmega328p microcontroller** 
 7. **Documentation**: Created comprehensive project documentation
 
 ## 🎯 Project Outcomes
-https://github.com/user-attachments/assets/d3904489-72fd-4c5b-912f-3b3d0232109d
 - Successfully demonstrated autonomous navigation in complex environments
 - Achieved reliable obstacle detection and avoidance capabilities
 - Validated custom hardware design through real-world testing
