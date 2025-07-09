@@ -59,7 +59,7 @@ This self-navigating robotic device utilizes the **ATmega328p microcontroller** 
 7. **Documentation**: Created comprehensive project documentation
 
 ## 🎯 Project Outcomes
-https://github.com/user-attachments/assets/fd5d2d2c-9756-40c9-9dfc-0a0dbf838834
+https://github.com/user-attachments/assets/d3904489-72fd-4c5b-912f-3b3d0232109d
 - Successfully demonstrated autonomous navigation in complex environments
 - Achieved reliable obstacle detection and avoidance capabilities
 - Validated custom hardware design through real-world testing
