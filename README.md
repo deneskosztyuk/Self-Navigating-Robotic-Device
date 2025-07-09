@@ -19,7 +19,6 @@ https://github.com/user-attachments/assets/6690cefc-9b7a-4c3d-8012-c05ae7c241ee
 ## 🛠️ Technical Implementation
 
 ### Hardware Design
-![Picturefdsfdsfs1](https://github.com/user-attachments/assets/89504bca-8950-4b13-b93f-a6c30add3a4c)
 - **Microcontroller**: ATmega328p MCU for main processing
 - **Sensors**: Infrared sensors for obstacle detection and distance measurement
 - **Motor Control**: Custom motor driver circuit with PID controller implementation
