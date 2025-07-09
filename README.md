@@ -9,11 +9,11 @@ This self-navigating robotic device utilizes the **ATmega328p microcontroller** 
 
 ## ✨ Key Features
 https://github.com/user-attachments/assets/6690cefc-9b7a-4c3d-8012-c05ae7c241ee
-- **Autonomous Navigation**: Intelligent pathfinding through challenging and unknown environments
+- **Autonomous Navigation**: Pathfinding through challenging and unknown environments
 - **Obstacle Avoidance**: Real-time infrared sensor-based detection and avoidance algorithms
 - **Custom Hardware**: Fully designed and manufactured PCB with hand-soldered components
 - **3D Printed Chassis**: Custom-designed robot body optimized for sensor placement and mobility
-- **PID Control System**: Precise motor control for smooth and accurate movement
+- **PID Control System**: Motor control for accurate movement
 - **Memory Management**: Onboard storage for navigation data and sensor readings
 
 ## 🛠️ Technical Implementation
@@ -39,7 +39,6 @@ https://github.com/user-attachments/assets/6690cefc-9b7a-4c3d-8012-c05ae7c241ee
 - **Component Assembly**: Hand-soldered all electronic components
 - **3D Printing**: Custom chassis fabrication
 - **System Integration**: Complete hardware and software integration
-- **Testing & Validation**: Comprehensive testing in various terrain conditions
 
 ## 🔧 Technologies Used
 - **Embedded C** - Core firmware development
@@ -54,20 +53,17 @@ https://github.com/user-attachments/assets/6690cefc-9b7a-4c3d-8012-c05ae7c241ee
 3. **Component Sourcing**: Selected and procured all electronic components
 4. **Assembly**: Hand-soldered PCB components and assembled mechanical systems
 5. **Firmware Development**: Wrote embedded C code for navigation and control
-6. **Testing & Iteration**: Conducted extensive testing and performance optimization
-7. **Documentation**: Created comprehensive project documentation
+6. **Testing & Iteration**: Conducted testing and performance optimization
 
 ## 🎯 Project Outcomes
-- Successfully demonstrated autonomous navigation in complex environments
+- Successfully demonstrated autonomous navigation
 - Achieved reliable obstacle detection and avoidance capabilities
 - Validated custom hardware design through real-world testing
 - Developed reusable firmware architecture for future robotics projects
 
 ## 📋 Skills Demonstrated
-
 - **Hardware Design**: PCB layout, component selection, and circuit analysis
 - **Manufacturing**: Soldering, assembly, and quality control processes
 - **Embedded Programming**: Real-time systems, sensor integration, and control algorithms
-- **Mechanical Design**: 3D modeling and additive manufacturing
 - **Systems Engineering**: Integration of hardware and software components
 - **Testing & Validation**: Performance analysis and iterative improvement
