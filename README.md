@@ -2,12 +2,12 @@
 
 A sophisticated autonomous robot built from the ground up, featuring custom hardware design, 3D printed chassis, and intelligent obstacle avoidance capabilities. This project demonstrates end-to-end robotics development from PCB design to firmware implementation.
 
-## 🤖 Project Overview
+## Project Overview
 This self-navigating robotic device utilizes the **ATmega328p microcontroller** as its brain, equipped with infrared sensors for obstacle detection and a suite of onboard modules for autonomous navigation through unknown terrain. The robot combines custom hardware design with intelligent software algorithms to create a fully autonomous navigation system.
 ![Pictfdsfure1](https://github.com/user-attachments/assets/1bbd3b62-5939-45a1-a90e-a5ee656c3c3b)
 
 
-## ✨ Key Features
+## Key Features
 https://github.com/user-attachments/assets/6690cefc-9b7a-4c3d-8012-c05ae7c241ee
 - **Autonomous Navigation**: Pathfinding through challenging and unknown environments
 - **Obstacle Avoidance**: Real-time infrared sensor-based detection and avoidance algorithms
@@ -16,7 +16,7 @@ https://github.com/user-attachments/assets/6690cefc-9b7a-4c3d-8012-c05ae7c241ee
 - **PID Control System**: Motor control for accurate movement
 - **Memory Management**: Onboard storage for navigation data and sensor readings
 
-## 🛠️ Technical Implementation
+## Technical Implementation
 
 ### Hardware Design
 - **Microcontroller**: ATmega328p MCU for main processing
@@ -39,14 +39,14 @@ https://github.com/user-attachments/assets/6690cefc-9b7a-4c3d-8012-c05ae7c241ee
 - **3D Printing**: Custom chassis fabrication
 - **System Integration**: Complete hardware and software integration
 
-## 🔧 Technologies Used
+## Technologies Used
 - **Embedded C** - Core firmware development
 - **Electronics Engineering** - Circuit design and component selection
 - **Robotics** - Navigation algorithms and system integration
 - **KiCad** - PCB design and schematic creation
 - **Arduino** - Development environment and prototyping
 
-## 🚀 Development Process
+## Development Process
 1. **Requirements Analysis**: Defined navigation capabilities and performance targets
 2. **Hardware Design**: Created custom PCB schematics and 3D printed chassis
 3. **Component Sourcing**: Selected and procured all electronic components
@@ -54,13 +54,13 @@ https://github.com/user-attachments/assets/6690cefc-9b7a-4c3d-8012-c05ae7c241ee
 5. **Firmware Development**: Wrote embedded C code for navigation and control
 6. **Testing & Iteration**: Conducted testing and performance optimization
 
-## 🎯 Project Outcomes
+## Project Outcomes
 - Successfully demonstrated autonomous navigation
 - Achieved reliable obstacle detection and avoidance capabilities
 - Validated custom hardware design through real-world testing
 - Developed reusable firmware architecture for future robotics projects
 
-## 📋 Skills Demonstrated
+## Skills Demonstrated
 - **Hardware Design**: PCB layout, component selection, and circuit analysis
 - **Manufacturing**: Soldering, assembly, and quality control processes
 - **Embedded Programming**: Real-time systems, sensor integration, and control algorithms
