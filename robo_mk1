@@ -1,4 +1,4 @@
-//Software to test a maze running robot
+//Software with PID wall-following
 #include <SharpIR.h>
 
 // Pin definitions
@@ -7,15 +7,28 @@
 #define sensorRpin A2
 #define model 1080
 
-int enMotorL = 9; //left motor speed pin
-int motorLF = 8; //left motor forward
-int motorLB = 7; //left motor backward
+int enMotorL = 9;
+int motorLF = 8;
+int motorLB = 7;
+int enMotorR = 6;
+int motorRF = 5;
+int motorRB = 3;
 
-int enMotorR = 6; //right motor speed pin
-int motorRF = 5; //right motor forward
-int motorRB = 3; //right motor backward
+// PID Constants (tune these!)
+float Kp = 3.0;   // Proportional gain
+float Ki = 0.1;   // Integral gain
+float Kd = 1.5;   // Derivative gain
 
-int threshold = 15;
+// PID Variables
+float error = 0;
+float lastError = 0;
+float integral = 0;
+float derivative = 0;
+float pidOutput = 0;
+
+int setpoint = 15;      // Desired distance from left wall (cm)
+int baseSpeed = 150;    // Base motor speed (0-255)
+int leftSpeed, rightSpeed;
 
 SharpIR sensorF = SharpIR(sensorFpin, model);
 SharpIR sensorL = SharpIR(sensorLpin, model);
@@ -23,12 +36,9 @@ SharpIR sensorR = SharpIR(sensorRpin, model);
 
 int fDistance, lDistance, rDistance;
 
-char newDir = 'S';
-char currentDir;
-
 void setup() {
   Serial.begin(115200);
-  Serial.println("Starting");
+  Serial.println("Starting PID Wall Follower");
 
   pinMode(motorLF, OUTPUT);
   pinMode(motorRF, OUTPUT);
@@ -37,9 +47,7 @@ void setup() {
   pinMode(enMotorR, OUTPUT);
   pinMode(enMotorL, OUTPUT);
 
-  analogWrite(enMotorR, 255);
-  analogWrite(enMotorL, 255);
-
+  // Start with motors off
   digitalWrite(motorLF, LOW);
   digitalWrite(motorLB, LOW);
   digitalWrite(motorRF, LOW);
@@ -51,64 +59,81 @@ void checkSensors() {
   lDistance = sensorL.distance();
   rDistance = sensorR.distance();
 
-  Serial.print("Front Sensor Distance: "); Serial.println(fDistance);
-  Serial.print("Left Sensor Distance: "); Serial.println(lDistance);
-  Serial.print("Right Sensor Distance: "); Serial.println(rDistance);
+  Serial.print("Front: "); Serial.print(fDistance);
+  Serial.print(" | Left: "); Serial.print(lDistance);
+  Serial.print(" | Right: "); Serial.println(rDistance);
+}
+
+void calculatePID() {
+  // Calculate error (positive = too close, negative = too far)
+  error = setpoint - lDistance;
+  
+  // Proportional term
+  float P = Kp * error;
+  
+  // Integral term (accumulated error)
+  integral += error;
+  // Anti-windup: prevent integral from growing too large
+  if (integral > 100) integral = 100;
+  if (integral < -100) integral = -100;
+  float I = Ki * integral;
+  
+  // Derivative term (rate of change)
+  derivative = error - lastError;
+  float D = Kd * derivative;
+  
+  // Total PID output
+  pidOutput = P + I + D;
+  
+  // Save error for next iteration
+  lastError = error;
+  
+  // Debug output
+  Serial.print("Error: "); Serial.print(error);
+  Serial.print(" | P: "); Serial.print(P);
+  Serial.print(" | I: "); Serial.print(I);
+  Serial.print(" | D: "); Serial.print(D);
+  Serial.print(" | PID: "); Serial.println(pidOutput);
+}
+
+void setMotorSpeeds() {
+  // Check for obstacles ahead
+  if (fDistance < 10) {
+    // STOP if obstacle too close
+    digitalWrite(motorLF, LOW);
+    digitalWrite(motorLB, LOW);
+    digitalWrite(motorRF, LOW);
+    digitalWrite(motorRB, LOW);
+    analogWrite(enMotorL, 0);
+    analogWrite(enMotorR, 0);
+    Serial.println("OBSTACLE! Stopping.");
+    return;
+  }
+  
+  leftSpeed = baseSpeed - pidOutput;   // Left motor slows if turning right
+  rightSpeed = baseSpeed + pidOutput;  // Right motor speeds up if turning right
+  
+  // Constrain speeds to valid range
+  leftSpeed = constrain(leftSpeed, 0, 255);
+  rightSpeed = constrain(rightSpeed, 0, 255);
+  
+  // Set motor directions (forward)
+  digitalWrite(motorLF, HIGH);
+  digitalWrite(motorLB, LOW);
+  digitalWrite(motorRF, HIGH);
+  digitalWrite(motorRB, LOW);
+  
+  // Apply speeds
+  analogWrite(enMotorL, leftSpeed);
+  analogWrite(enMotorR, rightSpeed);
+  
+  Serial.print("Left Speed: "); Serial.print(leftSpeed);
+  Serial.print(" | Right Speed: "); Serial.println(rightSpeed);
 }
 
 void loop() {
-  Serial.println("Checking Sensors");
   checkSensors();
-  Serial.println("Calculating Direction");
-  leftFollowingAlgorithm();
-  Serial.println("Setting New Direction");
-  setDirection();
-  Serial.println("Waiting (Comment out delay in loop function to stop this)");
-  delay(100);
-}
-
-void leftFollowingAlgorithm() {
-  if (lDistance < threshold - 5) {
-    newDir = 'R'; // Move right if too close to the left wall
-  } else if (lDistance > threshold + 5) {
-    newDir = 'L'; // Move left if too far from the left wall
-  } else if (fDistance < threshold) {
-    newDir = 'S'; // Stop if there is an obstacle in front
-  } else {
-    newDir = 'F'; // Move forward if no obstacles are detected
-  }
-}
-
-void setDirection() {
-  if (newDir == currentDir) {
-    Serial.println("No update to direction made");
-  } else if (newDir == 'F') {
-    digitalWrite(motorLF, HIGH);
-    digitalWrite(motorLB, LOW);
-    digitalWrite(motorRF, HIGH);
-    digitalWrite(motorRB, LOW);
-    Serial.println("Moving Forward");
-  } else if (newDir == 'S') {
-    digitalWrite(motorLF, LOW);
-    digitalWrite(motorLB, LOW);
-    digitalWrite(motorRF, LOW);
-    digitalWrite(motorRB, LOW);
-    Serial.println("Stopping");
-  } else if (newDir == 'L') {
-    digitalWrite(motorLF, LOW);
-    digitalWrite(motorLB, HIGH);
-    digitalWrite(motorRF, HIGH);
-    digitalWrite(motorRB, LOW);
-    Serial.println("Turning Left");
-  } else if (newDir == 'R') {
-    digitalWrite(motorLF, HIGH);
-    digitalWrite(motorLB, LOW);
-    digitalWrite(motorRF, LOW);
-    digitalWrite(motorRB, HIGH);
-    Serial.println("Turning Right");
-  }
-
-  currentDir = newDir;
-  Serial.print("Current Dir: ");
-  Serial.println(currentDir);
+  calculatePID();
+  setMotorSpeeds();
+  delay(50);  // PID update rate: 20Hz
 }
