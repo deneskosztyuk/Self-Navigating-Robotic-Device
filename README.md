@@ -1,6 +1,6 @@
 # Self-Navigating Robotic Device
 
-A sophisticated autonomous robot built from the ground up, featuring custom hardware design, 3D printed chassis, and intelligent obstacle avoidance capabilities. This project demonstrates end-to-end robotics development from PCB design to firmware implementation.
+An autonomous robot built from the ground up, featuring custom hardware design, 3D printed chassis, and intelligent obstacle avoidance capabilities. This project demonstrates end-to-end robotics development from PCB design to firmware implementation.
 
 ## Project Overview
 This self-navigating robotic device utilizes the **ATmega328p microcontroller** as its brain, equipped with infrared sensors for obstacle detection and a suite of onboard modules for autonomous navigation through unknown terrain. The robot combines custom hardware design with intelligent software algorithms to create a fully autonomous navigation system.
